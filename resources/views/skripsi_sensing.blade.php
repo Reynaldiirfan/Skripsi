@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-
+    <link rel="icon" href="{{ asset('assets/unpar.png') }}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -13,6 +13,20 @@
     <title>Sensing | Skripsi</title>
     <link href="{{ asset('css/skripsi_mainstyle.css') }}" rel="stylesheet" type="text/css" >
 </head>
+{{-- <script src="https://js.pusher.com/6.0/pusher.min.js"></script>
+<script>
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('c559846b0d74d3af1611', {
+      cluster: 'ap1'
+    });
+
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function(data) {
+      alert(JSON.stringify(data));
+    });
+  </script> TADINYA UNTUK WEBSOCKET--}}  
 <style>
     body{
         background-image: url("assets/sensing_bg.jpg") ;
@@ -154,14 +168,19 @@
 <script>
   
   var buttonSensing = document.getElementById('sensing_button').value;
+  var statusSensing = "true";
   
+
   function changeButtonText(){
     if(buttonSensing=="offline"){ 
       document.getElementById('sensing_button').innerHTML = 'Stop Sensing';
       buttonSensing = "online";
       alert("Sensing akan dimulai !");
+      statusSensing = "true";
       location.reload();
       return false;
+      
+      
     }
     else{ 
       document.getElementById('sensing_button').innerHTML = 'Mulai Sensing';
@@ -192,9 +211,18 @@
           cells3.item(j).innerHTML= '-';
         }
       }
-
       buttonSensing = "offline";
+      statusSensing = "false";
     }
   }
- 
+  
+    if(statusSensing=="true"){
+        setTimeout(function() {
+        location.reload();
+      }, 5000);
+    }
+
+
+  //  window.onload = checker
+
 </script>

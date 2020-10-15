@@ -1,4 +1,5 @@
 <?php
+use App\Event\TaskEvent;
 
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +30,7 @@ Route::get('/perangkat', function () {
     return view('skripsi_perangkat');
 });
 
+
 // Route::get('/check-status', function () {
 //     return view('skripsi_checkstatus');
 // });
@@ -36,5 +38,9 @@ Route::get('/perangkat', function () {
 Route::get('/sensing','SensingViewController@index');
 
 Route::get('/check-status','StatusViewController@index');
+
+Route::get('event', function () {
+    event(new TaskEvent('Hey How Are You'));
+});
 
 

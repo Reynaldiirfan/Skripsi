@@ -24,6 +24,7 @@
         <li><a href="/check-status">Check Status</a></li>
         <li><a href="/sensing">Sensing</a></li>
 
+
         <li style="float: right;"><a href="/cara-pakai">Cara Pakai</a></li>
         <li style="float: right;"><a href="/perangkat">Perangkat</a></li>
         
